@@ -15,6 +15,7 @@ class CreateMynavisTable extends Migration
     {
         Schema::create('mynavis', function (Blueprint $table) {
             $table->id();
+            $table->string('url');
             $table->timestamps();
         });
     }
