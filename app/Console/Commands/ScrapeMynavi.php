@@ -57,7 +57,7 @@ class ScrapeMynavi extends Command
 
     private function saveJobs()
     {
-        foreach (Mynavi::all() as $i => $mynaviUrl) {
+        foreach (Mynavi::all() as $mynaviUrl) {
             $url = $this::HOST . $mynaviUrl->url;
             $crawler = \Goutte::request('GET', $url);
 
@@ -67,9 +67,7 @@ class ScrapeMynavi extends Command
                 'company_name' => $this->getComponyName($crawler),
                 'features' => $this->getFeatures($crawler),
             ]);
-            if ($i > 3) {
-                break;
-            }
+
             sleep(30);
         }
     }
