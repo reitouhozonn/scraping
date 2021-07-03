@@ -67,7 +67,7 @@ class ScrapeMynavi extends Command
                 'company_name' => $this->getComponyName($crawler),
                 'features' => $this->getFeatures($crawler),
             ]);
-
+            dump($url);
             sleep(30);
         }
     }
@@ -105,7 +105,7 @@ class ScrapeMynavi extends Command
                 ];
             });
             DB::table('mynavis')->insert($urls);
-            // sleep(30);
+            sleep(30);
         }
     }
 
