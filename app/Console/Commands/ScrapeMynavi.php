@@ -60,6 +60,7 @@ class ScrapeMynavi extends Command
         foreach (Mynavi::all() as $mynaviUrl) {
             $url = $this::HOST . $mynaviUrl->url;
             $crawler = \Goutte::request('GET', $url);
+            dump($url);
 
             MynaviJob::create([
                 'url' => $url,
@@ -67,7 +68,6 @@ class ScrapeMynavi extends Command
                 'company_name' => $this->getComponyName($crawler),
                 'features' => $this->getFeatures($crawler),
             ]);
-            dump($url);
             sleep(30);
         }
     }
